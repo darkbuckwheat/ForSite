@@ -11,7 +11,7 @@ class MyValid(object):
     def __call__(self, form, field):
         url = field.data
         if url != '':
-            if url[:7] != 'https://':
+            if url[:8] != 'https://':
                 raise ValidationError(self.messege)
 
 
