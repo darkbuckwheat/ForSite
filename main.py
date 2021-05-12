@@ -7,6 +7,7 @@ from data.login_form import LoginForm
 from forms.user import RegisterForm
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
 from forms.news import NewsForm
+from os import environ
 
 
 app = Flask(__name__)
@@ -17,8 +18,8 @@ login_manager.init_app(app)
 
 def main():
     db_session.global_init("notes.db")
-
-    app.run()
+    port = int(environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 @login_manager.user_loader
